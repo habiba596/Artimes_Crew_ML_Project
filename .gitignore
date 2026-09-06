@@ -1,0 +1,5 @@
+venv/
+.qodo/
+artifacts/
+__pycache__/
+*.pyc
