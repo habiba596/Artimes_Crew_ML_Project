@@ -129,7 +129,7 @@ def apply_theme():
             transition: color 0.3s ease;
         }}
         div[data-testid="stNumberInput"] > label {{
-            min-height: 5.2rem !important;
+            min-height: 4.5rem !important;
             display: flex !important;
             align-items: flex-start !important;
         }}
