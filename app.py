@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 import joblib
 import numpy as np
 import pandas as pd
@@ -42,7 +43,7 @@ def load_artifacts():
 
         subprocess.run(
             [
-                "python",
+                sys .executable,
                 "train_model.py",
                 "--train-path",
                 "train.csv",
