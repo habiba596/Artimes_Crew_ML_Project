@@ -133,6 +133,15 @@ def apply_theme():
             display: flex !important;
             align-items: flex-start !important;
         }}
+        /* Align all input fields vertically */
+        div[data-testid="stNumberInput"] > label,
+        div[data-baseweb="select"] {{
+            min-height: 2.8rem !important;
+        }}
+        div[data-testid="stNumberInput"],
+        div[data-baseweb="select"] {{
+            margin-bottom: 0.8rem !important;
+        }}   
         .stForm label:hover {{
             color: {COLOR_HOVER} !important;
         }}
