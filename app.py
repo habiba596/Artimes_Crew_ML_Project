@@ -37,8 +37,6 @@ def load_artifacts():
 
     # Train the model automatically if artifacts do not exist
     if not os.path.exists(f"{ARTIFACTS_DIR}/model.keras"):
-        st.info("Model artifacts not found. Training the model...")
-
         os.makedirs(ARTIFACTS_DIR, exist_ok=True)
 
         subprocess.run(
