@@ -128,6 +128,16 @@ def apply_theme():
             font-weight: 600;
             transition: color 0.3s ease;
         }}
+        div[data-testid="stNumberInput"] {{
+            display: flex;
+            flex-direction: column;
+        }}
+
+        div[data-testid="stNumberInput"] label {{
+            min-height: 3.6rem !important;
+            display: flex !important;
+            align-items: flex-start !important;
+        }}
         .stForm label:hover {{
             color: {COLOR_HOVER} !important;
         }}
