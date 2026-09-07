@@ -1,3 +1,5 @@
+import os
+import subprocess
 import joblib
 import numpy as np
 import pandas as pd
@@ -31,6 +33,27 @@ FRIENDLY_BOOL_LABELS = {"1": "Yes", "0": "No"}
 
 @st.cache_resource
 def load_artifacts():
+
+    # Train the model automatically if artifacts do not exist
+    if not os.path.exists(f"{ARTIFACTS_DIR}/model.keras"):
+        st.info("Model artifacts not found. Training the model...")
+
+        os.makedirs(ARTIFACTS_DIR, exist_ok=True)
+
+        subprocess.run(
+            [
+                "python",
+                "train_model.py",
+                "--train-path",
+                "train.csv",
+                "--output-dir",
+                ARTIFACTS_DIR,
+                "--epochs",
+                "100",
+            ],
+            check=True,
+        )
+
     model = load_model(f"{ARTIFACTS_DIR}/model.keras")
     encoder = joblib.load(f"{ARTIFACTS_DIR}/encoder.pkl")
     scaler = joblib.load(f"{ARTIFACTS_DIR}/scaler.pkl")
@@ -39,6 +62,7 @@ def load_artifacts():
     cat_columns = joblib.load(f"{ARTIFACTS_DIR}/cat_columns.pkl")
     numeric_columns = joblib.load(f"{ARTIFACTS_DIR}/numeric_columns.pkl")
     bool_columns = joblib.load(f"{ARTIFACTS_DIR}/bool_columns.pkl")
+
     return (
         model,
         encoder,
